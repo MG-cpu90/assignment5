@@ -57,6 +57,14 @@ textarea{
   color: white;
 }
 
+div {
+  padding: 15px;
+}
+
+li {
+  padding: 5px;
+}
+
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
