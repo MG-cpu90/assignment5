@@ -6,7 +6,17 @@ var timeDateToday = moment().format('dddd, MMMM Do YYYY').toString();
 var time = moment().format('h:mm:ss a');
 
 var workHours = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
-var todos = [];
+var todos = ["", "", "", "", "", "", "", "", ""];
+
+// if this item exists in local storage, we will load it
+if  (localStorage.getItem("todos")) {
+  todos = JSON.parse(localStorage.getItem("todos"));
+  
+}
+
+else {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
 // workHours[0] = parseInt("9", 9);
 
@@ -33,10 +43,10 @@ container.innerHTML = workHours;
     container.append("<div class='row' id='bs-row" + i + "'>" +
       "<div class='col-md-3' id='hours-row" + i + "'>" + workHours[i] + "</div>" + 
       "<div class='col-md-7' id='input-row" + i + "'>" + "<input type='text' id='input" + i + "'placeholder=''>" + "</div>" + 
-      "<div class='col-md-2' id='save-row" + i + "'>" + "<button onclick='store()'>" + "<i class='fa fa-save' id='save" + i + "'></i>" + "</button>" + "</div>" +
+      "<div class='col-md-2' id='save-row" + i + "'>" + "<button class='save-button' id='save" + i + "'>" + "<i class='fa fa-save'></i>" + "</button>" + "</div>" +
     "</div>");
     }
-
+ 
   };
   // call the function
   createRow(workHours);
@@ -49,17 +59,27 @@ container.innerHTML = workHours;
 var inputToDo = document.getElementById("input" + i);
 var inputRow = $("#input-row" + i);
 
+$(".save-button").click(function (event) {
+var buttonIndex = $(this)[0].id[4];
 
-  function store(){
+var inputContent = $("#input" + buttonIndex).val();
+var todosTemp = JSON.parse(localStorage.getItem("todos"));
+console.log(todosTemp);
+todosTemp[buttonIndex] = inputContent;
+localStorage.setItem("todos", JSON.stringify(todosTemp));
+
+});
+
+function store(event){
     event.preventDefault();
+console.log(event);
+    // for (i = 0; i < workHours.length; i++) {
+      // var inputToDo = document.getElementById("input" + i);
+      // var inputRow = $("#input-row" + i);
+      // localStorage.setItem("input" + i, inputToDo.value);
+      // inputRow.append("<br>" + "<li>" + inputToDo.value + "</li>");
 
-    for (i = 0; i < workHours.length; i++) {
-      var inputToDo = document.getElementById("input" + i);
-      var inputRow = $("#input-row" + i);
-      localStorage.setItem("input" + i, inputToDo.value);
-      inputRow.append("<br>" + "<li>" + inputToDo.value + "</li>");
-
-    }
+    // }
 }
 
   // function store2(){
@@ -86,7 +106,7 @@ var inputRow = $("#input-row" + i);
   
   // if already data set in localstorage for this element, 
     // set HTML element
-  if(localStorage.getItem("input" + i)) { 
+  if (localStorage.getItem("input" + i)) { 
     container.innerHTML(localStorage.getItem("input" + i));
 }
 $("#save" + i).click(function appendData() {        
