@@ -8,11 +8,6 @@ var time = moment().format('h:mm:ss a');
 var workHours = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 var todos = ["", "", "", "", "", "", "", "", ""];
 
-// workHours[0] = parseInt("9", 9);
-// moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-// var timeID = (workHours[i] + 9);
-// console.log(timeID);
-
 // Add current date
 date.append(timeDateToday);
 
@@ -66,8 +61,7 @@ $(".save-button").click(function (event) {
   todosTemp[buttonIndex] = inputContent;
 
   localStorage.setItem("todos", JSON.stringify(todosTemp));
-  for ( const todo of todosTemp){
-     console.log(todo);
+  for (const todo of todosTemp) {
   }
 });
 
