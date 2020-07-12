@@ -28,6 +28,9 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
+## Usage
+* In order to run the application, open the "index.html" file inside the Develop folder in the browser window.
+
 ## Successses:
 * I was able to generate the html through JavaScript
 * I was able to display the current date using "moment"
