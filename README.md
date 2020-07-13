@@ -29,7 +29,8 @@ THEN the saved events persist
 ```
 
 ## Usage
-* In order to run the application, open the "index.html" file inside the Develop folder in the browser window.
+* In order to run the application, first clone the GitHub repository onto your local device. 
+* Then, open the "index.html" file inside the Develop folder in the browser window.
 
 ## Successses:
 * I was able to generate the html through JavaScript
